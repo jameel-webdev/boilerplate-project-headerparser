@@ -26,7 +26,7 @@ app.get("/api/hello", function (req, res) {
 
 //Request Header Parser Microservice
 app.get("/api/whoami", (req, res) => {
-  let ipaddress = req.ip;
+  const ipaddress = req.ip;
   const language = req.headers["accept-language"];
   const software = req.headers["user-agent"];
   res.json({
