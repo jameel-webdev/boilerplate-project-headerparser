@@ -27,6 +27,9 @@ app.get("/api/hello", function (req, res) {
 //Request Header Parser Microservice
 app.get("/api/whoami", (req, res) => {
   const ipaddress = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
+  if (ipaddress.substr(0, 7) === "::ffff:") {
+    ipaddress = ipaddress.substr(7);
+  }
   const language = req.headers["accept-language"];
   const software = req.headers["user-agent"];
   res.json({
